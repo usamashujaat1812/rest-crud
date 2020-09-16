@@ -1,0 +1,46 @@
+-------------------------------Run these command on any ubuntu server----------------------------------
+sudo apt update
+sudo apt install git
+sudo apt install npm
+node --version
+npm --version
+
+sudo apt install mysql-server
+
+sudo systemctl start mysql
+sudo systemctl status mysql
+sudo mysql_secure_installation
+
+Enter N
+#Set Password
+Root@12345
+Enter Y,Y,N,y
+
+sudo mysql
+
+SHOW DATABASES;
+	#If test is available
+USE test;
+	#if test is not available
+CREATE DATABASE test;
+USE test;
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'Username@12345'
+GRANT ALL PRIVILEGES ON test.* TO 'username'@'localhost';
+exit
+
+git clone https://github.com/codetrash/rest-crud.git
+cd rest-crud
+
+mysql -u username -p test < t_user.sql 
+
+vi server.js
+
+#Set
+host: 'localhost',
+    user: 'username',
+    password : 'Username@12345',
+    port : 3306, //port mysql
+    database:'test'
+
+npm install
+node server.js
